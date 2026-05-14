@@ -135,6 +135,12 @@ Open:
 
 This repository is prepared for deployment on Render with a free web service.
 
+### Live demo
+
+After deployment, replace this placeholder with your public URL:
+
+- Live demo URL: add your Render link here
+
 ### Included deployment files
 
 - `Procfile`
@@ -156,6 +162,7 @@ This repository is prepared for deployment on Render with a free web service.
 3. Use the `render.yaml` blueprint or the `gunicorn election_portal.wsgi:application` start command.
 4. Add your database credentials in the Render dashboard.
 5. Deploy and share the generated public URL with your recruiter.
+6. Paste that URL back into this README so the demo link is easy to find.
 
 ## Key ORM Logic
 
