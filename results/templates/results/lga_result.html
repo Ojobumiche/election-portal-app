@@ -1,0 +1,53 @@
+{% extends 'results/base.html' %}
+
+{% block content %}
+
+<h2 class="mb-4">LGA Summed Results</h2>
+
+<form method="get" class="mb-4">
+
+    <select name="lga" class="form-select">
+
+        <option value="">-- Select LGA --</option>
+
+        {% for lga in lgas %}
+            <option value="{{ lga.lga_id }}" {% if selected_lga and selected_lga.lga_id == lga.lga_id %}selected{% endif %}>
+                {{ lga.lga_name }}
+            </option>
+        {% endfor %}
+
+    </select>
+
+    <button type="submit" class="btn btn-primary mt-3">
+        Get Summed Result
+    </button>
+
+</form>
+
+{% if summed_results %}
+
+<table class="table table-bordered">
+
+    <thead>
+        <tr>
+            <th>Party</th>
+            <th>Total Score</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        {% for row in summed_results %}
+        <tr>
+            <td>{{ row.party_abbreviation }}</td>
+            <td>{{ row.total_score }}</td>
+        </tr>
+        {% endfor %}
+
+    </tbody>
+
+</table>
+
+{% endif %}
+
+{% endblock %}

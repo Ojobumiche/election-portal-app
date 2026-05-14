@@ -147,4 +147,14 @@ LGA summed results use Django aggregation:
 
 ## Author
 
-Joshua Monday Alfa Candidate Submission
+Joshua Monday Alfa — Candidate Submission
+
+GitHub: https://github.com/joshua-m-alfa/bincom-election-portal
+
+## Challenges and Solutions
+
+- Missing production schema: The repository needed several unmanaged models mapped to an existing MySQL schema. I added `managed = False` on models and aligned field names with the DB, then updated the local schema where necessary so Django ORM queries run without errors.
+- Partial dataset: Only a subset of `polling_unit` rows were initially available. I provided a safe import path and added defensive page behavior (auto-select the first LGA with results) so pages display meaningful data even with partial imports.
+- Template wiring and UX: Some pages were standalone and didn't use the shared `base.html`, so navigation was inconsistent. I refactored templates to extend the base, added a responsive Bootstrap navbar with active-state highlighting, and added message alerts for user feedback.
+
+These choices prioritize compatibility with an existing database, defensive UX, and recruiter-friendly navigation.

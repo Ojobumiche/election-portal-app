@@ -1,0 +1,35 @@
+{% extends 'results/base.html' %}
+
+{% block content %}
+<h2 class="mb-4">Add New Polling Unit Result</h2>
+
+<form method="post" class="card p-4 shadow-sm">
+    {% csrf_token %}
+
+    <div class="mb-3">
+        <label class="form-label" for="polling_unit_uniqueid">Polling Unit</label>
+        <select name="polling_unit_uniqueid" id="polling_unit_uniqueid" class="form-select" required>
+            <option value="">-- Select Polling Unit --</option>
+            {% for polling_unit in polling_units %}
+                <option value="{{ polling_unit.uniqueid }}">{{ polling_unit.polling_unit_name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label" for="entered_by_user">Entered By</label>
+        <input type="text" name="entered_by_user" id="entered_by_user" class="form-control" placeholder="Your name">
+    </div>
+
+    <div class="row mt-3">
+        {% for party in parties %}
+        <div class="col-md-4 mb-3">
+            <label class="form-label" for="{{ party }}">{{ party }}</label>
+            <input type="number" min="0" name="{{ party }}" id="{{ party }}" class="form-control" value="0">
+        </div>
+        {% endfor %}
+    </div>
+
+    <button class="btn btn-dark mt-4">Save Result</button>
+</form>
+{% endblock %}

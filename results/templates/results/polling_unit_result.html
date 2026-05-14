@@ -1,0 +1,42 @@
+{% extends 'results/base.html' %}
+
+{% block content %}
+
+    <h2 class="mb-4">Polling Unit Result</h2>
+
+    <form method="get" class="mb-4">
+        <select name="pu" class="form-select">
+            <option value="">-- Select Polling Unit --</option>
+            {% for pu in polling_units %}
+                <option value="{{ pu.uniqueid }}" {% if selected_unit and selected_unit.uniqueid == pu.uniqueid %}selected{% endif %}>
+                    {{ pu.polling_unit_name }}
+                </option>
+            {% endfor %}
+        </select>
+        <button type="submit" class="btn btn-primary mt-3">View Result</button>
+    </form>
+
+    {% if selected_unit %}
+    <p class="text-muted">Showing results for <strong>{{ selected_unit.polling_unit_name }}</strong></p>
+    {% endif %}
+
+    {% if results %}
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Party</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for result in results %}
+            <tr>
+                <td>{{ result.party_abbreviation }}</td>
+                <td>{{ result.party_score }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+
+{% endblock %}
