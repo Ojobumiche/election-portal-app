@@ -131,6 +131,32 @@ python manage.py runserver
 Open:
 - `http://127.0.0.1:8000/`
 
+## Deployment
+
+This repository is prepared for deployment on Render with a free web service.
+
+### Included deployment files
+
+- `Procfile`
+- `render.yaml`
+- `requirements.txt`
+- `.env.example`
+
+### Deployment notes
+
+- The app reads configuration from environment variables.
+- Use your hosted MySQL credentials for `DB_NAME`, `DB_USER`, `DB_PASSWORD`, `DB_HOST`, and `DB_PORT`.
+- Set `DEBUG=False` in production.
+- `Whitenoise` is enabled for static file handling.
+
+### Suggested Render flow
+
+1. Push the repository to GitHub.
+2. Create a new Render Web Service from the repo.
+3. Use the `render.yaml` blueprint or the `gunicorn election_portal.wsgi:application` start command.
+4. Add your database credentials in the Render dashboard.
+5. Deploy and share the generated public URL with your recruiter.
+
 ## Key ORM Logic
 
 LGA summed results use Django aggregation:
@@ -144,6 +170,7 @@ LGA summed results use Django aggregation:
 - This implementation intentionally uses unmanaged Django models (`managed = False`) to map onto pre-existing Bincom SQL tables.
 - The app includes defensive handling for empty/default selection states and user feedback messages.
 - Routing and template wiring are complete, and all primary navigation buttons are functional.
+- The repository is cleaned for publishing and includes deployment-ready configuration files.
 
 ## Author
 
