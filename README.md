@@ -151,7 +151,10 @@ After deployment, replace this placeholder with your public URL:
 ### Deployment notes
 
 - The app reads configuration from environment variables.
-- Use your hosted MySQL credentials for `DB_NAME`, `DB_USER`, `DB_PASSWORD`, `DB_HOST`, and `DB_PORT`.
+- Use the Render PostgreSQL connection string in `DATABASE_URL`.
+- If you deploy both the web service and the database on Render, use the internal Render URL for `DATABASE_URL`.
+- If you are connecting from outside Render, use the external URL instead.
+- On first startup, the app creates the legacy tables and seeds them from the bundled SQL files if they are missing.
 - Set `DEBUG=False` in production.
 - `Whitenoise` is enabled for static file handling.
 
@@ -160,7 +163,7 @@ After deployment, replace this placeholder with your public URL:
 1. Push the repository to GitHub.
 2. Create a new Render Web Service from the repo.
 3. Use the `render.yaml` blueprint or the `gunicorn election_portal.wsgi:application` start command.
-4. Add your database credentials in the Render dashboard.
+4. Add the Render PostgreSQL `DATABASE_URL` in the Render dashboard.
 5. Deploy and share the generated public URL with your recruiter.
 6. Paste that URL back into this README so the demo link is easy to find.
 
