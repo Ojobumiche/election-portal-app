@@ -133,13 +133,11 @@ Open:
 
 ## Deployment
 
-This repository is prepared for deployment on Render with a free web service.
+This repository is deploy on Render with a free web service.
 
 ### Live demo
 
-After deployment, replace this placeholder with your public URL:
-
-- Live demo URL: add your Render link here
+- Live demo URL: https://election-portal-app.onrender.com
 
 ### Included deployment files
 
