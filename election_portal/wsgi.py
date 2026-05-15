@@ -15,6 +15,4 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'election_portal.settings')
 
 application = get_wsgi_application()
 
-from results.bootstrap import bootstrap_legacy_database
 
-bootstrap_legacy_database()
