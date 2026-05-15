@@ -14,13 +14,5 @@ services:
         value: .onrender.com
       - key: CSRF_TRUSTED_ORIGINS
         value: https://election-portal-app.onrender.com
-      - key: DB_NAME
-        sync: false
-      - key: DB_USER
-        sync: false
-      - key: DB_PASSWORD
-        sync: false
-      - key: DB_HOST
-        sync: false
-      - key: DB_PORT
+      - key: DATABASE_URL
         sync: false
